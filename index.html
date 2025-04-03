@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Osteria Cento Ducati - Menu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* Reset e stili base */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background-color: #f8f5f0;
+      color: #333;
+      line-height: 1.6;
+    }
+    
+    .container {
+      max-width: 768px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+    }
+    
+    /* Header */
+    header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    
+    .logo {
+      width: 128px;
+      height: 128px;
+      border-radius: 50%;
+      border: 4px solid #698097;
+      margin: 0 auto 1rem;
+      overflow: hidden;
+      position: relative;
+    }
+    
+    .logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    h1 {
+      font-family: 'Lora', serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #14375b;
+      margin-bottom: 0.5rem;
+    }
+    
+    header p {
+      color: #698097;
+    }
+    
+    /* Menu Sections */
+    .menu-sections {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    
+    .menu-section {
+      border: 1px solid #fde68a;
+      border-radius: 0.5rem;
+      overflow: hidden;
+      background-color: #fffbeb;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem;
+      background: linear-gradient(to right, #fef3c7, #fffbeb);
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    
+    .section-header:hover {
+      background: linear-gradient(to right, #fde68a, #fef3c7);
+    }
+    
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    
+    .icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 50%;
+      background-color: #698097;
+      color: white;
+    }
+    
+    .section-title h2 {
+      font-family: 'Lora', serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #14375b;
+    }
+    
+    .chevron {
+      transition: transform 0.3s;
+    }
+    
+    .section-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease-in-out, opacity 0.3s;
+      opacity: 0;
+    }
+    
+    .section-content.active {
+      max-height: 2000px;
+      opacity: 1;
+    }
+    
+    .menu-items {
+      padding: 1rem;
+      background-color: white;
+      border-radius: 0.5rem;
+      margin: 1rem;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Menu Items */
+    .menu-item {
+      display: flex;
+      gap: 1rem;
+      padding-bottom: 1rem;
+      margin-bottom: 1rem;
+      border-bottom: 1px solid #fef3c7;
+    }
+    
+    .menu-item:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+    
+    .item-image {
+      width: 120px;
+      height: 80px;
+      border-radius: 0.375rem;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    
+    .item-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .item-details {
+      flex: 1;
+    }
+    
+    .item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 0.25rem;
+    }
+    
+    .item-name {
+      font-family: 'Lora', serif;
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: #14375b;
+    }
+    
+    .item-price {
+      font-weight: 500;
+      color: #698097;
+    }
+    
+    .item-description {
+      font-size: 0.875rem;
+      color: #698097;
+    }
+    
+    /* Wine Categories */
+    .wine-category {
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid #fde68a;
+    }
+    
+    .wine-category h3 {
+      font-family: 'Lora', serif;
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: #14375b;
+      margin-bottom: 0.5rem;
+    }
+    
+    .wine-category:not(:first-child) {
+      margin-top: 2rem;
+    }
+    
+    /* Footer */
+    footer {
+      margin-top: 3rem;
+      text-align: center;
+      font-size: 0.875rem;
+      color: #698097;
+    }
+    
+    footer p {
+      margin-bottom: 0.25rem;
+    }
+    
+    footer p:first-child {
+      font-weight: 500;
+    }
+    
+    footer p.hours {
+      margin-top: 0.5rem;
+    }
+    
+    /* Responsive */
+    @media (max-width: 640px) {
+      .menu-item {
+        flex-direction: column;
+      }
+      
+      .item-image {
+        width: 100%;
+        height: 160px;
+        margin-bottom: 0.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo">
+        <img src="immagini\centomammate.png" alt="Cento Ducati">
+      </div>
+      <h1>Cento Ducati</h1>
+      <p>Osteria a Porto Cesareo</p>
+    </header>
+    
+    <div class="menu-sections">
+      <!-- Menu Fisso Section -->
+      <div class="menu-section">
+        <div class="section-header" onclick="toggleSection(this)">
+          <div class="section-title">
+            <div class="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16 2-2.3 2.3a3 3 0 0 0 0 4.2l1.8 1.8a3 3 0 0 0 4.2 0L22 8"/><path d="M15 15 3.3 3.3a4.2 4.2 0 0 0 0 6l7.3 7.3c.7.7 2 .7 2.8 0L15 15Zm0 0 7 7"/><path d="m2.1 21.8 6.4-6.3"/><path d="m19 5-7 7"/></svg>
+            </div>
+            <h2>Menu Fisso</h2>
+          </div>
+          <div class="chevron">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#698097" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </div>
+        </div>
+        <div class="section-content active">
+          <div class="menu-items">
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="placeholder.jpg" alt="Solo Antipasto">
+              </div>
+              <div class="item-details">
+                <div class="item-header">
+                  <h3 class="item-name">Solo Antipasto</h3>
+                  <span class="item-price">€15</span>
+                </div>
+                <p class="item-description">Selezione di antipasti della casa con prodotti locali e di stagione</p>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="placeholder.jpg" alt="Antipasto e Primo">
+              </div>
+              <div class="item-details">
+                <div class="item-header">
+                  <h3 class="item-name">Antipasto e Primo</h3>
+                  <span class="item-price">€25</span>
+                </div>
+                <p class="item-description">Antipasto della casa seguito da un primo a scelta tra le nostre specialità</p>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="placeholder.jpg" alt="Antipasto, Primo e Secondo">
+              </div>
+              <div class="item-details">
+                <div class="item-header">
+                  <h3 class="item-name">Antipasto, Primo e Secondo</h3>
+                  <span class="item-price">€35</span>
+                </div>
+                <p class="item-description">Esperienza completa con antipasto, primo e secondo piatto della tradizione</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Carne Section -->
+      <div class="menu-section">
+        <div class="section-header" onclick="toggleSection(this)">
+          <div class="section-title">
+            <div class="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16 2-2.3 2.3a3 3 0 0 0 0 4.2l1.8 1.8a3 3 0 0 0 4.2 0L22 8"/><path d="M15 15 3.3 3.3a4.2 4.2 0 0 0 0 6l7.3 7.3c.7.7 2 .7 2.8 0L15 15Zm0 0 7 7"/><path d="m2.1 21.8 6.4-6.3"/><path d="m19 5-7 7"/></svg>
+            </div>
+            <h2>Carne</h2>
+          </div>
+          <div class="chevron">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#698097" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </div>
+        </div>
+        <div class="section-content">
+          <div class="menu-items">
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="placeholder.jpg" alt="Bistecca alla Fiorentina">
+              </div>
+              <div class="item-details">
+                <div class="item-header">
+                  <h3 class="item-name">Bistecca alla Fiorentina</h3>
+                  <span class="item-price">€28</span>
+                </div>
+                <p class="item-description">Bistecca di manzo alla griglia con rosmarino e aglio, servita con patate arrosto</p>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="placeholder.jpg" alt="Ossobuco alla Milanese">
+              </div>
+              <div class="item-details">
+                <div class="item-header">
+                  <h3 class="item-name">Ossobuco alla Milanese</h3>
+                  <span class="item-price">€24</span>
+                </div>
+                <p class="item-description">Stinco di vitello brasato con verdure, servito con risotto allo zafferano</p>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="placeholder.jpg" alt="Saltimbocca alla Romana">
+              </div>
+              <div class="item-details">
+                <div class="item-header">
+                  <h3 class="item-name">Saltimbocca alla Romana</h3>
+                  <span class="item-price">€22</span>
+                </div>
+                <p class="item-description">Fettine di vitello con prosciutto e salvia, cotte nel vino bianco</p>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="placeholder.jpg" alt="Arrosto di Maiale">
+              </div>
+              <div class="item-details">
+                <div class="item-header">
+                  <h3 class="item-name">Arrosto di Maiale</h3>
+                  <span class="item-price">€20</span>
+                </div>
+                <p class="item-description">Arrosto di maiale con erbe aromatiche, servito con verdure di stagione</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Bibite Section -->
+      <div class="menu-section">
+        <div class="section-header" onclick="toggleSection(this)">
+          <div class="section-title">
+            <div class="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v1"/><path d="M2 12h1"/><path d="M21 12h1"/><path d="m4.93 4.93.7.7"/><path d="m18.36 4.93-.7.7"/><path d="m4.93 19.07.7-.7"/><path d="m18.36 19.07-.7-.7"/><path d="M12 21v-1"/><path d="M19 16a7 7 0 1 1-14 0"/><path d="M9 9h6l-3 9-3-9Z"/></svg>
+            </div>
+            <h2>Bibite</h2>
+          </div>
+          <div class="chevron">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#698097" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </div>
+        </div>
+        <div class="section-content">
+          <div class="menu-items">
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="placeholder.jpg" alt="Acqua Naturale">
+              </div>
+              <div class="item-details">
+                <div class="item-header">
+                  <h3 class="item-name">Acqua Naturale</h3>
+                  <span class="item-price">€3</span>
+                </div>
+                <p class="item-description">Bottiglia 0,75L</p>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="placeholder.jpg" alt="Acqua Frizzante">
+              </div>
+              <div class="item-details">
+                <div class="item-header">
+                  <h3 class="item-name">Acqua Frizzante</h3>
+                  <span class="item-price">€3</span>
+                </div>
+                <p class="item-description">Bottiglia 0,75L</p>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="placeholder.jpg" alt="Coca Cola">
+              </div>
+              <div class="item-details">
+                <div class="item-header">
+                  <h3 class="item-name">Coca Cola</h3>
+                  <span class="item-price">€4</span>
+                </div>
+                <p class="item-description">Bottiglia 0,33L</p>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="placeholder.jpg" alt="Aranciata San Pellegrino">
+              </div>
+              <div class="item-details">
+                <div class="item-header">
+                  <h3 class="item-name">Aranciata San Pellegrino</h3>
+                  <span class="item-price">€4</span>
+                </div>
+                <p class="item-description">Bottiglia 0,33L</p>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="placeholder.jpg" alt="Limonata Fatta in Casa">
+              </div>
+              <div class="item-details">
+                <div class="item-header">
+                  <h3 class="item-name">Limonata Fatta in Casa</h3>
+                  <span class="item-price">€5</span>
+                </div>
+                <p class="item-description">Con limoni freschi e menta</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Vini Section -->
+      <div class="menu-section">
+        <div class="section-header" onclick="toggleSection(this)">
+          <div class="section-title">
+            <div class="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3v10a4 4 0 0 0 8 0V3"/><path d="M4 22h16"/><path d="M10 9h4"/></svg>
+            </div>
+            <h2>Vini</h2>
+          </div>
+          <div class="chevron">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#698097" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </div>
+        </div>
+        <div class="section-content">
+          <div class="menu-items">
+            <div class="wine-category">
+              <h3>Vini Rossi</h3>
+            </div>
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="placeholder.jpg" alt="Chianti Classico">
+              </div>
+              <div class="item-details">
+                <div class="item-header">
+                  <h3 class="item-name">Chianti Classico</h3>
+                  <span class="item-price">€28</span>
+                </div>
+                <p class="item-description">Toscana - Intenso e corposo con note di ciliegia e spezie</p>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="placeholder.jpg" alt="Barolo">
+              </div>
+              <div class="item-details">
+                <div class="item-header">
+                  <h3 class="item-name">Barolo</h3>
+                  <span class="item-price">€45</span>
+                </div>
+                <p class="item-description">Piemonte - Elegante e strutturato con tannini vellutati</p>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="placeholder.jpg" alt="Montepulciano d'Abruzzo">
+              </div>
+              <div class="item-details">
+                <div class="item-header">
+                  <h3 class="item-name">Montepulciano d'Abruzzo</h3>
+                  <span class="item-price">€24</span>
+                </div>
+                <p class="item-description">Abruzzo - Fruttato e morbido con note di frutti rossi</p>
+              </div>
+            </div>
+            
+            <div class="wine-category">
+              <h3>Vini Bianchi</h3>
+            </div>
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="placeholder.jpg" alt="Pinot Grigio">
+              </div>
+              <div class="item-details">
+                <div class="item-header">
+                  <h3 class="item-name">Pinot Grigio</h3>
+                  <span class="item-price">€22</span>
+                </div>
+                <p class="item-description">Friuli - Fresco e aromatico con note di pera e mela verde</p>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="placeholder.jpg" alt="Vermentino">
+              </div>
+              <div class="item-details">
+                <div class="item-header">
+                  <h3 class="item-name">Vermentino</h3>
+                  <span class="item-price">€26</span>
+                </div>
+                <p class="item-description">Sardegna - Minerale e sapido con sentori di agrumi</p>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="placeholder.jpg" alt="Falanghina">
+              </div>
+              <div class="item-details">
+                <div class="item-header">
+                  <h3 class="item-name">Falanghina</h3>
+                  <span class="item-price">€24</span>
+                </div>
+                <p class="item-description">Campania - Fruttato e floreale con buona acidità</p>
+              </div>
+            </div>
+            
+            <div class="wine-category">
+              <h3>Vino della Casa</h3>
+            </div>
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="placeholder.jpg" alt="Rosso della Casa">
+              </div>
+              <div class="item-details">
+                <div class="item-header">
+                  <h3 class="item-name">Rosso della Casa</h3>
+                  <span class="item-price">€15</span>
+                </div>
+                <p class="item-description">Calice €4 - Vino locale, morbido e di facile beva</p>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="placeholder.jpg" alt="Bianco della Casa">
+              </div>
+              <div class="item-details">
+                <div class="item-header">
+                  <h3 class="item-name">Bianco della Casa</h3>
+                  <span class="item-price">€15</span>
+                </div>
+                <p class="item-description">Calice €4 - Vino locale, fresco e profumato</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <footer>
+      <p>Osteria Cento Ducati</p>
+      <p>Via Alfieri 17, Porto Cesareo (LE)</p>
+      <p>Tel: 320 037 6003</p>
+      <p class="hours">Aperto tutti i giorni dalle 19:00</p>
+      <p>Domenica aperto anche a pranzo</p>
+    </footer>
+  </div>
+  
+  <script>
+    // Funzione per aprire/chiudere le sezioni del menu
+    function toggleSection(element) {
+      const content = element.nextElementSibling;
+      const chevron = element.querySelector('.chevron svg');
+      
+      // Chiudi tutte le altre sezioni
+      const allContents = document.querySelectorAll('.section-content');
+      const allChevrons = document.querySelectorAll('.chevron svg');
+      
+      allContents.forEach(item => {
+        if (item !== content) {
+          item.classList.remove('active');
+        }
+      });
+      
+      allChevrons.forEach(item => {
+        if (item !== chevron) {
+          item.style.transform = 'rotate(0deg)';
+        }
+      });
+      
+      // Apri/chiudi la sezione corrente
+      content.classList.toggle('active');
+      
+      // Ruota la freccia
+      if (content.classList.contains('active')) {
+        chevron.style.transform = 'rotate(180deg)';
+      } else {
+        chevron.style.transform = 'rotate(0deg)';
+      }
+    }
+    
+    // Apri la prima sezione all'avvio
+    document.addEventListener('DOMContentLoaded', function() {
+      const firstSection = document.querySelector('.section-header');
+      if (firstSection) {
+        const chevron = firstSection.querySelector('.chevron svg');
+        chevron.style.transform = 'rotate(180deg)';
+      }
+    });
+  </script>
+</body>
+</html>
