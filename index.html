@@ -18,7 +18,7 @@
 
     @font-face {
       font-family: 'Tw Cen MT Condensed';
-      src: url('fonts/TCCB.ttf') format('truetype'); /* Aggiorna il nome del file */
+      src: url('fonts/TCCB.ttf') format('truetype');
       font-weight: normal;
       font-style: normal;
     }
@@ -150,7 +150,7 @@
     /* Menu Items */
     .menu-item {
       display: flex;
-      gap: 1rem;
+      justify-content: space-between;
       padding-bottom: 1rem;
       margin-bottom: 1rem;
       border-bottom: 1px solid #fef3c7;
@@ -160,20 +160,6 @@
       margin-bottom: 0;
       padding-bottom: 0;
       border-bottom: none;
-    }
-    
-    .item-image {
-      width: 120px;
-      height: 80px;
-      border-radius: 0.375rem;
-      overflow: hidden;
-      flex-shrink: 0;
-    }
-    
-    .item-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
     }
     
     .item-details {
@@ -196,7 +182,8 @@
     
     .item-price {
       font-weight: 500;
-      color: #698097;
+      color: #14375b;
+      margin-left: 1rem;
     }
     
     .item-description {
@@ -248,12 +235,28 @@
       .menu-item {
         flex-direction: column;
       }
-      
-      .item-image {
-        width: 100%;
-        height: 160px;
-        margin-bottom: 0.5rem;
-      }
+    }
+
+    /* Antipasti e altri menu senza immagini */
+    .simple-menu-item {
+      padding: 0.5rem 0;
+      border-bottom: 1px solid #fef3c7;
+    }
+
+    .simple-menu-item:last-child {
+      border-bottom: none;
+    }
+
+    .flex-between {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .menu-note {
+      font-style: italic;
+      color: #698097;
+      margin-bottom: 1rem;
     }
   </style>
 </head>
@@ -284,37 +287,37 @@
         <div class="section-content active">
           <div class="menu-items">
             <div class="menu-item">
-              <div class="item-image">
-                <img src="placeholder.jpg" alt="Solo Antipasto">
-              </div>
               <div class="item-details">
                 <div class="item-header">
-                  <h3 class="item-name">Solo Antipasto</h3>
-                  <span class="item-price">€15</span>
+                  <h3 class="item-name">Antipasto della Casa</h3>
+                  <span class="item-price">€25,00</span>
                 </div>
                 <p class="item-description">Selezione di antipasti della casa con prodotti locali e di stagione</p>
               </div>
             </div>
             <div class="menu-item">
-              <div class="item-image">
-                <img src="placeholder.jpg" alt="Antipasto e Primo">
-              </div>
               <div class="item-details">
                 <div class="item-header">
-                  <h3 class="item-name">Antipasto e Primo</h3>
-                  <span class="item-price">€25</span>
+                  <h3 class="item-name">Antipasto della Casa e Primo</h3>
+                  <span class="item-price">€30,00</span>
                 </div>
                 <p class="item-description">Antipasto della casa seguito da un primo a scelta tra le nostre specialità</p>
               </div>
             </div>
             <div class="menu-item">
-              <div class="item-image">
-                <img src="placeholder.jpg" alt="Antipasto, Primo e Secondo">
-              </div>
               <div class="item-details">
                 <div class="item-header">
-                  <h3 class="item-name">Antipasto, Primo e Secondo</h3>
-                  <span class="item-price">€35</span>
+                  <h3 class="item-name">Antipasto della Casa e Grigliata Mista</h3>
+                  <span class="item-price">€35,00</span>
+                </div>
+                <p class="item-description">Antipasto della casa seguito da una grigliata mista di carni selezionate</p>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="item-details">
+                <div class="item-header">
+                  <h3 class="item-name">Antipasto della Casa - Primo e Grigliata Mista</h3>
+                  <span class="item-price">€40,00</span>
                 </div>
                 <p class="item-description">Esperienza completa con antipasto, primo e secondo piatto della tradizione</p>
               </div>
@@ -323,14 +326,14 @@
         </div>
       </div>
       
-      <!-- Carne Section -->
+      <!-- Antipasti Section -->
       <div class="menu-section">
         <div class="section-header" onclick="toggleSection(this)">
           <div class="section-title">
             <div class="icon">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16 2-2.3 2.3a3 3 0 0 0 0 4.2l1.8 1.8a3 3 0 0 0 4.2 0L22 8"/><path d="M15 15 3.3 3.3a4.2 4.2 0 0 0 0 6l7.3 7.3c.7.7 2 .7 2.8 0L15 15Zm0 0 7 7"/><path d="m2.1 21.8 6.4-6.3"/><path d="m19 5-7 7"/></svg>
             </div>
-            <h2>Carne</h2>
+            <h2>Antipasti</h2>
           </div>
           <div class="chevron">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#698097" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
@@ -338,66 +341,75 @@
         </div>
         <div class="section-content">
           <div class="menu-items">
-            <div class="menu-item">
-              <div class="item-image">
-                <img src="placeholder.jpg" alt="Bistecca alla Fiorentina">
-              </div>
-              <div class="item-details">
-                <div class="item-header">
-                  <h3 class="item-name">Bistecca alla Fiorentina</h3>
-                  <span class="item-price">€28</span>
-                </div>
-                <p class="item-description">Bistecca di manzo alla griglia con rosmarino e aglio, servita con patate arrosto</p>
-              </div>
+            <div class="simple-menu-item">
+              <p class="item-description">Melanzane grigliate</p>
             </div>
-            <div class="menu-item">
-              <div class="item-image">
-                <img src="placeholder.jpg" alt="Ossobuco alla Milanese">
-              </div>
-              <div class="item-details">
-                <div class="item-header">
-                  <h3 class="item-name">Ossobuco alla Milanese</h3>
-                  <span class="item-price">€24</span>
-                </div>
-                <p class="item-description">Stinco di vitello brasato con verdure, servito con risotto allo zafferano</p>
-              </div>
+            <div class="simple-menu-item">
+              <p class="item-description">Peperoni</p>
             </div>
-            <div class="menu-item">
-              <div class="item-image">
-                <img src="placeholder.jpg" alt="Saltimbocca alla Romana">
-              </div>
-              <div class="item-details">
-                <div class="item-header">
-                  <h3 class="item-name">Saltimbocca alla Romana</h3>
-                  <span class="item-price">€22</span>
-                </div>
-                <p class="item-description">Fettine di vitello con prosciutto e salvia, cotte nel vino bianco</p>
-              </div>
+            <div class="simple-menu-item">
+              <p class="item-description">Ricottina</p>
             </div>
-            <div class="menu-item">
-              <div class="item-image">
-                <img src="placeholder.jpg" alt="Arrosto di Maiale">
-              </div>
-              <div class="item-details">
-                <div class="item-header">
-                  <h3 class="item-name">Arrosto di Maiale</h3>
-                  <span class="item-price">€20</span>
-                </div>
-                <p class="item-description">Arrosto di maiale con erbe aromatiche, servito con verdure di stagione</p>
-              </div>
+            <div class="simple-menu-item">
+              <p class="item-description">Tagliere salumi e formaggi (Salame piccante, salame dolce e formaggi vari)</p>
+            </div>
+            <div class="simple-menu-item">
+              <p class="item-description">Pezzetti di cavallo</p>
+            </div>
+            <div class="simple-menu-item">
+              <p class="item-description">Pezzetti di vitello</p>
+            </div>
+            <div class="simple-menu-item">
+              <p class="item-description">Polpette al sugo</p>
+            </div>
+            <div class="simple-menu-item">
+              <p class="item-description">Cipolla caramellata</p>
+            </div>
+            <div class="simple-menu-item">
+              <p class="item-description">Frittino misto</p>
+            </div>
+            <div class="simple-menu-item">
+              <p class="item-description">Trippa e patate</p>
+            </div>
+            <div class="simple-menu-item">
+              <p class="item-description">Fave e cicorie</p>
+            </div>
+            <div class="simple-menu-item">
+              <p class="item-description">Verdure di stagione a pignata</p>
+            </div>
+            <div class="simple-menu-item">
+              <p class="item-description">Lampascioni fritti</p>
+            </div>
+            <div class="simple-menu-item">
+              <p class="item-description">Lampascioni al sugo</p>
+            </div>
+            <div class="simple-menu-item">
+              <p class="item-description">Pomodori gialli scattarisciati</p>
+            </div>
+            <div class="simple-menu-item">
+              <p class="item-description">Porchetta</p>
+            </div>
+            <div class="simple-menu-item">
+              <p class="item-description">Pitta di patate</p>
+            </div>
+            <div class="simple-menu-item">
+              <p class="item-description">Rustica cipollata</p>
+            </div>
+            <div class="simple-menu-item">
+              <p class="item-description">Frise con pomodoro e rucola</p>
             </div>
           </div>
         </div>
       </div>
       
-      <!-- Bibite Section -->
+      <!-- Primi Section -->
       <div class="menu-section">
         <div class="section-header" onclick="toggleSection(this)">
           <div class="section-title">
             <div class="icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v1"/><path d="M2 12h1"/><path d="M21 12h1"/><path d="m4.93 4.93.7.7"/><path d="m18.36 4.93-.7.7"/><path d="m4.93 19.07.7-.7"/><path d="m18.36 19.07-.7-.7"/><path d="M12 21v-1"/><path d="M19 16a7 7 0 1 1-14 0"/><path d="M9 9h6l-3 9-3-9Z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16 2-2.3 2.3a3 3 0 0 0 0 4.2l1.8 1.8a3 3 0 0 0 4.2 0L22 8"/><path d="M15 15 3.3 3.3a4.2 4.2 0 0 0 0 6l7.3 7.3c.7.7 2 .7 2.8 0L15 15Zm0 0 7 7"/><path d="m2.1 21.8 6.4-6.3"/><path d="m19 5-7 7"/></svg>
             </div>
-            <h2>Bibite</h2>
+            <h2>Primi</h2>
           </div>
           <div class="chevron">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#698097" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
@@ -405,65 +417,77 @@
         </div>
         <div class="section-content">
           <div class="menu-items">
-            <div class="menu-item">
-              <div class="item-image">
-                <img src="placeholder.jpg" alt="Acqua Naturale">
-              </div>
-              <div class="item-details">
-                <div class="item-header">
-                  <h3 class="item-name">Acqua Naturale</h3>
-                  <span class="item-price">€3</span>
-                </div>
-                <p class="item-description">Bottiglia 0,75L</p>
-              </div>
+            <p class="menu-note">Secondo la disponibilità del giorno</p>
+            <div class="simple-menu-item flex-between">
+              <p class="item-description">Orecchiette al sugo</p>
+              <span class="item-price">€7,00</span>
             </div>
-            <div class="menu-item">
-              <div class="item-image">
-                <img src="placeholder.jpg" alt="Acqua Frizzante">
-              </div>
-              <div class="item-details">
-                <div class="item-header">
-                  <h3 class="item-name">Acqua Frizzante</h3>
-                  <span class="item-price">€3</span>
-                </div>
-                <p class="item-description">Bottiglia 0,75L</p>
-              </div>
+            <div class="simple-menu-item flex-between">
+              <p class="item-description">Orecchiette con le cime di rapa</p>
+              <span class="item-price">€8,00</span>
             </div>
-            <div class="menu-item">
-              <div class="item-image">
-                <img src="placeholder.jpg" alt="Coca Cola">
-              </div>
-              <div class="item-details">
-                <div class="item-header">
-                  <h3 class="item-name">Coca Cola</h3>
-                  <span class="item-price">€4</span>
-                </div>
-                <p class="item-description">Bottiglia 0,33L</p>
-              </div>
+            <div class="simple-menu-item flex-between">
+              <p class="item-description">Maccheroni con i pezzetti</p>
+              <span class="item-price">€8,50</span>
             </div>
-            <div class="menu-item">
-              <div class="item-image">
-                <img src="placeholder.jpg" alt="Aranciata San Pellegrino">
-              </div>
-              <div class="item-details">
-                <div class="item-header">
-                  <h3 class="item-name">Aranciata San Pellegrino</h3>
-                  <span class="item-price">€4</span>
-                </div>
-                <p class="item-description">Bottiglia 0,33L</p>
-              </div>
+            <div class="simple-menu-item flex-between">
+              <p class="item-description">Ciceri e tria</p>
+              <span class="item-price">€9,00</span>
             </div>
-            <div class="menu-item">
-              <div class="item-image">
-                <img src="placeholder.jpg" alt="Limonata Fatta in Casa">
-              </div>
-              <div class="item-details">
-                <div class="item-header">
-                  <h3 class="item-name">Limonata Fatta in Casa</h3>
-                  <span class="item-price">€5</span>
-                </div>
-                <p class="item-description">Con limoni freschi e menta</p>
-              </div>
+            <div class="simple-menu-item flex-between">
+              <p class="item-description">Lasagna leccese</p>
+              <span class="item-price">€9,00</span>
+            </div>
+            <div class="simple-menu-item flex-between">
+              <p class="item-description">Sagna ncannulata al ragù di polpette</p>
+              <span class="item-price">€9,00</span>
+            </div>
+            <div class="simple-menu-item flex-between">
+              <p class="item-description">Parmigiana di melanzane</p>
+              <span class="item-price"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Secondi Section -->
+      <div class="menu-section">
+        <div class="section-header" onclick="toggleSection(this)">
+          <div class="section-title">
+            <div class="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16 2-2.3 2.3a3 3 0 0 0 0 4.2l1.8 1.8a3 3 0 0 0 4.2 0L22 8"/><path d="M15 15 3.3 3.3a4.2 4.2 0 0 0 0 6l7.3 7.3c.7.7 2 .7 2.8 0L15 15Zm0 0 7 7"/><path d="m2.1 21.8 6.4-6.3"/><path d="m19 5-7 7"/></svg>
+            </div>
+            <h2>Secondi</h2>
+          </div>
+          <div class="chevron">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#698097" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </div>
+        </div>
+        <div class="section-content">
+          <div class="menu-items">
+            <div class="simple-menu-item flex-between">
+              <p class="item-description">Bombette</p>
+              <span class="item-price">€12,00</span>
+            </div>
+            <div class="simple-menu-item flex-between">
+              <p class="item-description">Turcinieddhri</p>
+              <span class="item-price">€12,00</span>
+            </div>
+            <div class="simple-menu-item flex-between">
+              <p class="item-description">Salsiccia locale</p>
+              <span class="item-price">€9,00</span>
+            </div>
+            <div class="simple-menu-item flex-between">
+              <p class="item-description">Grigliata mista</p>
+              <span class="item-price">€14,00</span>
+            </div>
+            <div class="simple-menu-item flex-between">
+              <p class="item-description">Tagliata di manzo</p>
+              <span class="item-price">€18,00</span>
+            </div>
+            <div class="simple-menu-item flex-between">
+              <p class="item-description">Bistecca di manzo (circa 700gr)</p>
+              <span class="item-price">€35,00</span>
             </div>
           </div>
         </div>
@@ -484,112 +508,171 @@
         </div>
         <div class="section-content">
           <div class="menu-items">
-            <div class="wine-category">
-              <h3>Vini Rossi</h3>
+            <div class="simple-menu-item flex-between">
+              <p class="item-description">BIANCO CHARDONNAY CL75 TERESA MANARA CANTELE</p>
+              <span class="item-price">€25,00</span>
             </div>
-            <div class="menu-item">
-              <div class="item-image">
-                <img src="placeholder.jpg" alt="Chianti Classico">
-              </div>
-              <div class="item-details">
-                <div class="item-header">
-                  <h3 class="item-name">Chianti Classico</h3>
-                  <span class="item-price">€28</span>
-                </div>
-                <p class="item-description">Toscana - Intenso e corposo con note di ciliegia e spezie</p>
-              </div>
+            <div class="simple-menu-item flex-between">
+              <p class="item-description">ROSATO NEGROAMARO ROHESIA CL.75 CANTELE</p>
+              <span class="item-price">€20,00</span>
             </div>
-            <div class="menu-item">
-              <div class="item-image">
-                <img src="placeholder.jpg" alt="Barolo">
-              </div>
-              <div class="item-details">
-                <div class="item-header">
-                  <h3 class="item-name">Barolo</h3>
-                  <span class="item-price">€45</span>
-                </div>
-                <p class="item-description">Piemonte - Elegante e strutturato con tannini vellutati</p>
-              </div>
+            <div class="simple-menu-item flex-between">
+              <p class="item-description">ROSSO NEGRAM. CL.75 CANTELE</p>
+              <span class="item-price">€14,00</span>
             </div>
-            <div class="menu-item">
-              <div class="item-image">
-                <img src="placeholder.jpg" alt="Montepulciano d'Abruzzo">
-              </div>
-              <div class="item-details">
-                <div class="item-header">
-                  <h3 class="item-name">Montepulciano d'Abruzzo</h3>
-                  <span class="item-price">€24</span>
-                </div>
-                <p class="item-description">Abruzzo - Fruttato e morbido con note di frutti rossi</p>
-              </div>
+            <div class="simple-menu-item flex-between">
+              <p class="item-description">ROSSO PRIMITIVO CL.75 CANTELE</p>
+              <span class="item-price">€15,00</span>
             </div>
-            
-            <div class="wine-category">
-              <h3>Vini Bianchi</h3>
+            <div class="simple-menu-item flex-between">
+              <p class="item-description">ROSSO SALICE SAL.RISER.CL.75 CANTELE</p>
+              <span class="item-price">€18,00</span>
             </div>
-            <div class="menu-item">
-              <div class="item-image">
-                <img src="placeholder.jpg" alt="Pinot Grigio">
-              </div>
-              <div class="item-details">
-                <div class="item-header">
-                  <h3 class="item-name">Pinot Grigio</h3>
-                  <span class="item-price">€22</span>
-                </div>
-                <p class="item-description">Friuli - Fresco e aromatico con note di pera e mela verde</p>
-              </div>
+            <div class="simple-menu-item flex-between">
+              <p class="item-description">ROSSO SUSUMANIELLO CL.75 CANTELE</p>
+              <span class="item-price">€14,00</span>
             </div>
-            <div class="menu-item">
-              <div class="item-image">
-                <img src="placeholder.jpg" alt="Vermentino">
-              </div>
-              <div class="item-details">
-                <div class="item-header">
-                  <h3 class="item-name">Vermentino</h3>
-                  <span class="item-price">€26</span>
-                </div>
-                <p class="item-description">Sardegna - Minerale e sapido con sentori di agrumi</p>
-              </div>
+            <div class="simple-menu-item flex-between">
+              <p class="item-description">Canulli vino bianco frizzante</p>
+              <span class="item-price">€12,00</span>
             </div>
-            <div class="menu-item">
-              <div class="item-image">
-                <img src="placeholder.jpg" alt="Falanghina">
-              </div>
-              <div class="item-details">
-                <div class="item-header">
-                  <h3 class="item-name">Falanghina</h3>
-                  <span class="item-price">€24</span>
-                </div>
-                <p class="item-description">Campania - Fruttato e floreale con buona acidità</p>
-              </div>
+            <div class="simple-menu-item flex-between">
+              <p class="item-description">Canulli vino Rosato frizzante</p>
+              <span class="item-price">€12,00</span>
             </div>
-            
-            <div class="wine-category">
-              <h3>Vino della Casa</h3>
+            <div class="simple-menu-item flex-between">
+              <p class="item-description">Concione NEGROAMARO rosato dop</p>
+              <span class="item-price">€15,00</span>
             </div>
-            <div class="menu-item">
-              <div class="item-image">
-                <img src="placeholder.jpg" alt="Rosso della Casa">
-              </div>
-              <div class="item-details">
-                <div class="item-header">
-                  <h3 class="item-name">Rosso della Casa</h3>
-                  <span class="item-price">€15</span>
-                </div>
-                <p class="item-description">Calice €4 - Vino locale, morbido e di facile beva</p>
-              </div>
+            <div class="simple-menu-item flex-between">
+              <p class="item-description">Concione NEGROAMARO rosso dop</p>
+              <span class="item-price">€15,00</span>
             </div>
-            <div class="menu-item">
-              <div class="item-image">
-                <img src="placeholder.jpg" alt="Bianco della Casa">
-              </div>
-              <div class="item-details">
-                <div class="item-header">
-                  <h3 class="item-name">Bianco della Casa</h3>
-                  <span class="item-price">€15</span>
-                </div>
-                <p class="item-description">Calice €4 - Vino locale, fresco e profumato</p>
-              </div>
+            <div class="simple-menu-item flex-between">
+              <p class="item-description">Concione primitivo rosso dop</p>
+              <span class="item-price">€15,00</span>
+            </div>
+            <div class="simple-menu-item flex-between">
+              <p class="item-description">Cantine Lizzano bianco IGP</p>
+              <span class="item-price">€13,00</span>
+            </div>
+            <div class="simple-menu-item flex-between">
+              <p class="item-description">Cantine Lizzano Negroamaro rosato IGP</p>
+              <span class="item-price">€13,00</span>
+            </div>
+            <div class="simple-menu-item flex-between">
+              <p class="item-description">Terre Malvasia bianco</p>
+              <span class="item-price">€10,00</span>
+            </div>
+            <div class="simple-menu-item flex-between">
+              <p class="item-description">SPUMANTE SERENA GRAN CUVE'E CL.75 SERENA</p>
+              <span class="item-price">€10,00</span>
+            </div>
+            <div class="simple-menu-item flex-between">
+              <p class="item-description">PROSECCO BORTOLOMIOL PRIOR BRUT DOCG CL.75 VALDOBBIADENE</p>
+              <span class="item-price">€18,00</span>
+            </div>
+            <div class="simple-menu-item flex-between">
+              <p class="item-description">VINO ROSSO DELLA CASA 1LT</p>
+              <span class="item-price">€8,00</span>
+            </div>
+            <div class="simple-menu-item flex-between">
+              <p class="item-description">VINO ROSSO DELLA CASA 1/2 LT</p>
+              <span class="item-price">€5,00</span>
+            </div>
+            <div class="simple-menu-item flex-between">
+              <p class="item-description">VINO ROSSO DELLA CASA 1/4 LT</p>
+              <span class="item-price">€3,00</span>
+            </div>
+            <div class="simple-menu-item flex-between">
+              <p class="item-description">VINO ROSATO DELLA CASA 1LT</p>
+              <span class="item-price">€8,00</span>
+            </div>
+            <div class="simple-menu-item flex-between">
+              <p class="item-description">VINO ROSATO DELLA CASA 1/2 LT</p>
+              <span class="item-price">€5,00</span>
+            </div>
+            <div class="simple-menu-item flex-between">
+              <p class="item-description">VINO ROSATO DELLA CASA 1/4 LT</p>
+              <span class="item-price">€3,00</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Bevande Section -->
+      <div class="menu-section">
+        <div class="section-header" onclick="toggleSection(this)">
+          <div class="section-title">
+            <div class="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v1"/><path d="M2 12h1"/><path d="M21 12h1"/><path d="m4.93 4.93.7.7"/><path d="m18.36 4.93-.7.7"/><path d="m4.93 19.07.7-.7"/><path d="m18.36 19.07-.7-.7"/><path d="M12 21v-1"/><path d="M19 16a7 7 0 1 1-14 0"/><path d="M9 9h6l-3 9-3-9Z"/></svg>
+            </div>
+            <h2>Bevande</h2>
+          </div>
+          <div class="chevron">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#698097" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </div>
+        </div>
+        <div class="section-content">
+          <div class="menu-items">
+            <div class="simple-menu-item flex-between">
+              <p class="item-description">SAN BERNARDO ACQUA NATURALE 1LT</p>
+              <span class="item-price">€2,00</span>
+            </div>
+            <div class="simple-menu-item flex-between">
+              <p class="item-description">SAN BERNARDO ACQUA FRIZZANTE 1LT</p>
+              <span class="item-price">€2,00</span>
+            </div>
+            <div class="simple-menu-item flex-between">
+              <p class="item-description">COCA COLA 1LT</p>
+              <span class="item-price">€3,00</span>
+            </div>
+            <div class="simple-menu-item flex-between">
+              <p class="item-description">COCA COLA LATTINA</p>
+              <span class="item-price">€1,50</span>
+            </div>
+            <div class="simple-menu-item flex-between">
+              <p class="item-description">FANTA 1LT</p>
+              <span class="item-price">€3,00</span>
+            </div>
+            <div class="simple-menu-item flex-between">
+              <p class="item-description">FANTA LATTINA</p>
+              <span class="item-price">€1,50</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Dolci e Amari Section -->
+      <div class="menu-section">
+        <div class="section-header" onclick="toggleSection(this)">
+          <div class="section-title">
+            <div class="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><line x1="6" x2="6" y1="2" y2="4"/><line x1="10" x2="10" y1="2" y2="4"/><line x1="14" x2="14" y1="2" y2="4"/></svg>
+            </div>
+            <h2>Dolci e Amari</h2>
+          </div>
+          <div class="chevron">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#698097" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </div>
+        </div>
+        <div class="section-content">
+          <div class="menu-items">
+            <div class="simple-menu-item flex-between">
+              <p class="item-description">DOLCE DELLA CASA</p>
+              <span class="item-price">€3,50</span>
+            </div>
+            <div class="simple-menu-item flex-between">
+              <p class="item-description">SPUMONE</p>
+              <span class="item-price">€5,00</span>
+            </div>
+            <div class="simple-menu-item flex-between">
+              <p class="item-description">LIMONCELLO FATTO IN CASA</p>
+              <span class="item-price">€3,00</span>
+            </div>
+            <div class="simple-menu-item flex-between">
+              <p class="item-description">AMARO PUGLIESE</p>
+              <span class="item-price">€2,00</span>
             </div>
           </div>
         </div>
