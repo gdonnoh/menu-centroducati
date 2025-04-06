@@ -21,6 +21,7 @@
       src: url('fonts/TCCB.ttf') format('truetype');
       font-weight: normal;
       font-style: normal;
+      font-display: swap;
     }
     
     body {
@@ -59,11 +60,12 @@
     }
     
     h1 {
-      font-family: 'Tw Cen MT Condensed', sans-serif;
+      font-family: 'Tw Cen MT Condensed', 'Arial Narrow', sans-serif;
       font-size: 2.5rem;
       font-weight: 700;
       color: #14375b;
       margin-bottom: 0.5rem;
+      text-transform: uppercase;
     }
     
     header p {
@@ -488,6 +490,45 @@
             <div class="simple-menu-item flex-between">
               <p class="item-description">Bistecca di manzo (circa 700gr)</p>
               <span class="item-price">€35,00</span>
+            </div>
+            <div class="simple-menu-item flex-between">
+              <p class="item-description">Cotoletta di pollo con patatine fritte</p>
+              <span class="item-price">€9,00</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Contorni Section -->
+      <div class="menu-section">
+        <div class="section-header" onclick="toggleSection(this)">
+          <div class="section-title">
+            <div class="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10 10 10 0 0 0-10-10zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"/><path d="M12 6a4 4 0 1 0 4 4 4 4 0 0 0-4-4zm0 6a2 2 0 1 1 2-2 2 2 0 0 1-2 2z"/></svg>
+            </div>
+            <h2>Contorni</h2>
+          </div>
+          <div class="chevron">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#698097" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </div>
+        </div>
+        <div class="section-content">
+          <div class="menu-items">
+            <div class="simple-menu-item flex-between">
+              <p class="item-description">Patatine fritte</p>
+              <span class="item-price">€3,00</span>
+            </div>
+            <div class="simple-menu-item flex-between">
+              <p class="item-description">Patate al forno</p>
+              <span class="item-price">€4,00</span>
+            </div>
+            <div class="simple-menu-item flex-between">
+              <p class="item-description">Insalata verde</p>
+              <span class="item-price">€3,00</span>
+            </div>
+            <div class="simple-menu-item flex-between">
+              <p class="item-description">Insalata mista</p>
+              <span class="item-price">€4,00</span>
             </div>
           </div>
         </div>
